@@ -1,7 +1,9 @@
 # SEPTA Checker: v2
-This is a Discord bot that fetches from the SEPTA API every 2 minutes and returns delays, last recorded location, and train consist information for user-inputted train numbers in a specified text channel. It also regularly updates users on alerts/advisories for regional rail lines.
+Originally created in 2021, this is a Discord bot that fetches from the SEPTA API every 2 minutes and returns delays, last recorded location, and train consist information for user-inputted train numbers in a specified text channel. It also regularly updates users on alerts/advisories for regional rail lines.
 
 This bot is designed to be used in one server per host, posting messages to a locked channel, so as it is the only user that can post in the channel. *Using this bot in a public channel or one that is unlocked to various people may be problematic.*
+
+Version 2 consists of a complete overhaul and re-writing of the original bot's code owing to a recent overhaul of SEPTA's website and feeds. Version 1 of this project is now archived, no longer being worked on. [You can view the repostiory here](https://github.com/sbrugel/SEPTA-Checker).
 
 ## Features
 **Ability to track train delay, location, and consist information live.** The bot allows you to add certain SEPTA train numbers to the tracker, using the `/addtrain` command. Trains can be removed from the tracker using the `/removetrain` and `/cleartrains` commands. These are added to a feed which is updated every two minutes.
@@ -31,8 +33,6 @@ Version 2 primarily consists of significant refactoring of code mainly due to SE
 - Refactoring of certain functions, including train lookup
 - Alerts: Media/Elwyn replaced with Media/Wawa. Improved alert formatting, now using regex. Line parameter is now choices instead of a text box.
 - Removal of station tracking due to the removal of TrainView. May or may not be reinstated later.
-
-v1 of this project is now archived, no longer being worked on. [Available for viewing here](https://github.com/sbrugel/SEPTA-Checker).
 
 ## Credits
 This bot was created and is maintained by Simon Brugel.
