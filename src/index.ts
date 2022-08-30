@@ -5,6 +5,7 @@ import { BOT } from './config';
 import axios from 'axios';
 import cron from 'cron';
 import { lookupTrains } from './utils/lookupTrains';
+import { lookupAlerts } from './utils/lookupAlerts';
 
 const client = new DiscordJS.Client({
     intents: [
@@ -85,4 +86,5 @@ async function runCommand(interaction: CommandInteraction, client: Client): Prom
 
 function main() {
     lookupTrains(client);
+    lookupAlerts(client);
 }

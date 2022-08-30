@@ -26,7 +26,7 @@ export default class extends Command {
             if (filteredData.length === 0) return interaction.reply({ content: `This train could not be found. Either the train is currently not running or the train number you entered is invalid.`, ephemeral: true });
             
             const train = filteredData[0];
-            return interaction.reply({ content: `Train no. **${train.trainno}** going to ${train.dest} is currently running **${train.late > 0 ? `${train.late} minutes late` : `on time`}** - formed of ${BOT.verboseConsists ? train.consist : `${train.consist.length} cars`}. Last seen at ${train.currentstop}.`, ephemeral: true });
+            return interaction.reply({ content: `Train no. **${train.trainno}** going to ${train.dest} is currently running **${train.late > 0 ? `${train.late} minutes late` : `on time`}** - formed of ${BOT.verboseConsists ? train.consist : `${train.consist.split(',').length} cars`}. Last seen at ${train.currentstop}.`, ephemeral: true });
         });
     }
 }

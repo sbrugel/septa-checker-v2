@@ -10,14 +10,18 @@ export function lookupTrains(client: Client) {
     .then((res) => {
         const data = res.data;
         const filteredData = data.filter((t: { trainno: string; }) => BOT.trains.includes(t.trainno));
-        for (const train of filteredData) {
-            toPrint += `Train no. **${train.trainno}** going to ${train.dest} is currently running **${train.late > 0 ? `${train.late} minutes late` : `on time`}** - formed of ${BOT.verboseConsists ? train.consist : `${train.consist.split(',').length} cars`}. Last seen at ${train.currentstop}.`;
-            if (index < (filteredData.length - 1)) toPrint += "\n\n";
-            index++;
-        }
-        if (filteredData.length === 0) toPrint = "No train updates at this time for the services you have specified";
-        if (BOT.trains.length === 0) toPrint = "No trains are currently being tracked. You can add trains using the `/addtrain` command.";
 
+        if (filteredData.length === 0) toPrint = "No train updates at this time for the services you have specified";
+        if (BOT.trains.length === 0) toPrint = "No trains are currently being tracked. You can add trains using the `/addtrain` command."
+
+        if (toPrint === "") {
+            for (const train of filteredData) {
+                toPrint += `Train no. **${train.trainno}** going to ${train.dest} is currently running **${train.late > 0 ? `${train.late} minutes late` : `on time`}** - formed of ${BOT.verboseConsists ? train.consist : `${train.consist.split(',').length} cars`}. Last seen at ${train.currentstop}.`;
+                if (index < (filteredData.length - 1)) toPrint += "\n\n";
+                index++;
+            }
+        }
+        
         const guild = client.guilds.cache.get(BOT.GUILD_ID);
 	    const channel = guild.channels.cache.get(BOT.SEND_TO) as TextChannel;
 
