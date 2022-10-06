@@ -9,8 +9,8 @@ function sanitizeHTML(str: string) {
     // further preparations
     str = str.replace('<a >', '<a>');
 
-    // replace tags with markdown or nothing
-    str = str.replace(/<p>|<a>|<\/a>/g, '');
+    // replace tags or asterisks with markdown or nothing
+    str = str.replace(/<p>|<a>|<\/a>|<ul>|<li>|<\/ul>|<\/li>|<br \/>|\*+/g, '');
     str = str.replace(/<\/p>/g, '\n\n');
     str = str.replace(/<strong>|<\/strong>/g, '**');
     str = str.replace(/<em>|<\/em>/g, '*');
