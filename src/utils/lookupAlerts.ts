@@ -49,6 +49,15 @@ export function lookupAlerts(client: Client) {
         const guild = client.guilds.cache.get(BOT.GUILD_ID);
 	    const channel = guild.channels.cache.get(BOT.SEND_ALERTS_TO) as TextChannel;
 
+        if (toPrintAlerts.length > 4096) {
+            toPrintAlerts = toPrintAlerts.substring(0, 3900);
+            toPrintAlerts += "...\n\n**__Cannot display all alerts. View all at https://realtime.septa.org/system/rail__**";
+        }
+        if (toPrintAdvisories.length > 4096) {
+            toPrintAdvisories = toPrintAdvisories.substring(0, 3900);
+            toPrintAdvisories += "...\n\n**__Cannot display all alerts. View all at https://realtime.septa.org/system/rail__**";
+        }
+
         let today = new Date();
         let hr = convertTime(today.getHours()),
             min = convertTime(today.getMinutes()),
